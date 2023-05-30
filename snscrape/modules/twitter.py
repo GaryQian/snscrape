@@ -1089,7 +1089,7 @@ class _TwitterAPIScraper(snscrape.base.Scraper):
 			if isinstance(user, UserRef) or user is None:
 				_logger.warning(f'Unavailable user in card on tweet {tweetId}')
 				continue
-			if user.id in userRefs:
+			if user == None or user.id in userRefs:
 				if userRefs[user.id] != user:
 					_logger.warning(f'Duplicate user {user.id} with differing data in card on tweet {tweetId}')
 				continue
