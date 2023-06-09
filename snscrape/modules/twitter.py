@@ -1609,7 +1609,7 @@ class _TwitterAPIScraper(snscrape.base.Scraper):
 			return self._graphql_user_results_to_user_ref(results, userId)
 		kwargs = {}
 		kwargs['blue'] = results['result']['is_blue_verified']
-		if (labelO := results['result']['affiliates_highlighted_label'].get('label')):
+		if 'affiliates_highlighted_label' in results['result'] and (labelO := results['result']['affiliates_highlighted_label'].get('label')):
 			kwargs['label'] = self._user_label_to_user_label(labelO)
 		return self._user_to_user(results['result']['legacy'], id_ = userId if userId is not None else int(results['result']['rest_id']), **kwargs)
 
